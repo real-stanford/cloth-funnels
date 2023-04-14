@@ -1,0 +1,130 @@
+
+name: null
+log_dir: ../experiments/
+output_dir: null
+tags: null
+notes: null 
+log: null # keep this null
+seed: 0
+deterministic: False
+load: null
+cont: null
+tasks: ../assets/tasks/multi-longsleeve-train.hdf5
+eval: False
+eval_tasks: ../assets/tasks/multi-longsleeve-eval.hdf5 
+ray_local_mode: False
+expert_demonstration: False
+reward_type: delta_weighted
+wandb: disabled
+dataset_path: null
+max_steps: 100000
+
+# vis:
+dump_visualizations: False
+dump_network_inputs: False 
+
+#logging
+record_task_config: False
+
+# render:
+render_dim: 480
+render_engine: opengl
+gui: False
+
+# network:
+pos_deformable: False 
+weight_decay: 1e-6
+lr: 1e-3
+batch_size: 32
+num_workers: 0
+n_bins: 1
+input_channel_types: rgb_pos #rgb_pos if you want pos to be included
+# include_pos: True 
+obs_dim: 128 #network input resolution
+network_gpu: 0
+constant_positional_enc: True
+
+#nocs 
+nocs_mode: collapsed
+keypoint_model_path: /local/crv/acanberk/cloth-funnels/models/keypoint_model.ckpt
+
+# pretrain:
+pretrain_epochs: 
+pretrain_dataset_path: null
+pretrain_validation_path: null 
+network_eval: False
+  
+# train:
+num_processes: 24
+replay_buffer_size: 4096
+batches_per_update: 8  # how many batches per each optimization step
+update_frequency: 1  # how many steps to take before updating
+points_per_update: 128
+warmup: 2048 #number of points collected until training network
+warmup_only: False
+episode_length: 8
+save_ckpt: 256
+unfactorized_networks: False
+unfactorized_rewards: False
+coverage_reward: False
+
+# train/exploration:
+override_exploration: False 
+action_expl_prob: 1
+action_expl_decay: 0.980
+value_expl_prob: 1
+value_expl_decay: 0.965
+fixed_fling_height: -1
+
+
+#halflives specified based on num steps
+action_expl_halflife: 10000
+value_expl_halflife: 5000
+
+
+use_adaptive_scaling: True 
+use_normalized_coverage: True 
+
+action_primitives:
+- place
+- fling
+fling_only: False
+place_only: False
+
+fold_finish: False
+repeat_tasks: True
+
+pix_grasp_dist: 16
+pix_drag_dist: 16
+pix_place_dist: 10
+stretchdrag_dist: 0.3
+reach_distance_limit: 1.5
+table_width: 1.53
+adaptive_fling_momentum: 0.8
+
+num_rotations: 16 #number of rotations for spatial action map
+# scale_factors: [0.75, 1.0, 1.5, 2.0, 2.5, 3.0]
+scale_factors: [1.0, 1.5, 2.0, 2.5, 3.0]
+
+
+alpha: 1 #for dense alignment
+deformable_weight: 0.65
+deformable_pos: True
+gamma: 0  ## for multistep formulation
+
+
+#for recreating scenarios
+recreate_buffer: null 
+recreate_key: null
+recreate_primitive: null
+recreate_x_offset: 0 
+recreate_y_offset: 0
+
+grid_search: False
+grid_search_vmap_idx: None 
+grid_search_primitive: None
+
+##some irrelevant parameters:
+action_forward_size: 4
+
+  

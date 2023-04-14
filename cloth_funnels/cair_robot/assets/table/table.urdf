@@ -1,0 +1,34 @@
+<?xml version="0.0" ?>
+<robot name="table.urdf">
+  <link name="base_link">
+    <contact>
+      <lateral_friction value="1.0"/>
+      <inertia_scaling value="3.0"/>
+    </contact>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="10.0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
+    <visual>
+      <geometry>
+				<mesh filename="table.stl"/>
+      </geometry>
+      <material name="LightGrey">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+	 	    <mesh filename="table.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <link name="world"/>
+  <joint name="world_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+  </joint>
+</robot>

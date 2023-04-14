@@ -1,0 +1,29 @@
+datamodule:
+  hdf5_path: /local/crv/acanberk/folding-unfolding/src/experiments/multi-jumpsuit-random.hdf5
+  train_split: 0.95
+  split_seed: 0
+  batch_size: 32
+  num_workers: 4
+  sigma: 1
+  bins: 32
+  nocs_dims: [0, 2]
+  ignore_index: -1
+model:
+  n_bins: 32
+  n_dims: 2
+  learning_rate: 0.001
+  weight_decay: 0.0001
+checkpoint_callback:
+  save_top_k: 10
+  every_n_epochs: 1
+vis_callback:
+  num_samples: 32
+  seed: 0
+trainer:
+  gpus: [0]
+  check_val_every_n_epoch: 1
+  val_check_interval: 1.0
+logger:
+  offline: True
+  name: null
+  tags: []

@@ -1,0 +1,99 @@
+all_joints:
+- - 0
+- - 1
+- - 2
+- - 3
+- - 4
+- - 5
+- - 6
+- - 7
+- - 8
+- - 9
+all_joints_names:
+- left_collar
+- right_collar
+- left_shoulder
+- right_shoulder
+- left_top_arm_tip
+- right_top_arm_tip
+- left_bottom_arm_tip
+- right_bottom_arm_tip
+- left_bottom_corner
+- right_bottom_corner
+alpha_r: 0.02
+apply_prob: 0.5
+batch_size:
+clahe: true
+claheratio: 0.1
+crop_pad: 0
+cropratio: 0.4
+dataset: training-datasets/iteration-0/UnaugmentedDataSet_shirt_keypointsJun21/shirt_keypoints_acanberk95shuffle1.mat
+dataset_type: imgaug
+decay_steps: 30000
+deterministic: false
+display_iters: 1000
+edge: false
+emboss:
+  alpha:
+  - 0.0
+  - 1.0
+  embossratio: 0.1
+  strength:
+  - 0.5
+  - 1.5
+fg_fraction: 0.25
+global_scale: 0.8
+histeq: true
+histeqratio: 0.1
+init_weights: /home/zhenjia/dev/shirt-deeplabcut/shirt_keypoints-acanberk-2022-06-21/dlc-models/iteration-0/shirt_keypointsJun21-trainset95shuffle1/train/snapshot-50000
+intermediate_supervision: false
+intermediate_supervision_layer: 12
+location_refinement: true
+locref_huber_loss: true
+locref_loss_weight: 0.05
+locref_stdev: 7.2801
+log_dir: log
+lr_init: 0.0005
+max_input_size: 1500
+mean_pixel:
+- 123.68
+- 116.779
+- 103.939
+metadataset: training-datasets/iteration-0/UnaugmentedDataSet_shirt_keypointsJun21/Documentation_data-shirt_keypoints_95shuffle1.pickle
+min_input_size: 64
+mirror: false
+multi_stage: false
+multi_step:
+- - 0.005
+  - 10000
+- - 0.02
+  - 430000
+- - 0.002
+  - 730000
+- - 0.001
+  - 1030000
+net_type: resnet_50
+num_joints: 10
+num_outputs: 1
+optimizer: sgd
+pairwise_huber_loss: false
+pairwise_predict: false
+partaffinityfield_predict: false
+pos_dist_thresh: 17
+project_path: /home/zhenjia/dev/shirt-deeplabcut/shirt_keypoints-acanberk-2022-06-21
+regularize: false
+rotation: 25
+rotratio: 0.4
+save_iters: 50000
+scale_jitter_lo: 0.5
+scale_jitter_up: 1.25
+scoremap_dir: test
+sharpen: false
+sharpenratio: 0.3
+shuffle: true
+snapshot_prefix: /home/zhenjia/dev/shirt-deeplabcut/shirt_keypoints-acanberk-2022-06-21/dlc-models/iteration-0/shirt_keypointsJun21-trainset95shuffle1/train/snapshot
+stride: 8.0
+weigh_negatives: false
+weigh_only_present_joints: false
+weigh_part_predictions: false
+weight_decay: 0.0001

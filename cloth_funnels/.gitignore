@@ -1,0 +1,9 @@
+*.hdf5 
+*.hdf5.lock
+*events.out.tfevents.*
+*.pth
+learning/nocs_unet_data
+*.mp4
+*.ckpt
+*.html
+

@@ -1,0 +1,71 @@
+datamodule:
+  data_dir: /local/crv/acanberk/folding-unfolding/src/keypoint_detector/train_0
+  train_split: 0.95
+  split_seed: 0
+  batch_size: 128
+  num_workers: 4
+  sigma: 2.0
+  imgaug_cfg:
+    apply_prob: 0.9
+    
+    crop_size: [100, 100]
+    max_shift: 0.2
+    crop_sampling: hybrid
+
+    cropratio: 0.6
+
+    rotation: 180
+    rotratio: 1
+
+    scale_jitter_lo: 0.5
+    scale_jitter_up: 1.25
+
+    mirror: False
+
+    clahe: True
+    claheratio: 0.1
+    histeq: True
+    histeqratio: 0.1
+
+    sharpen: True
+    sharpenratio: 0.3
+    edge: False
+    emboss:
+      alpha: [0.0, 1.0]
+      strength: [0.5, 1.5]
+      embossratio: 0.1
+
+    # sigmoid: True
+    # sigmoidratio: 0.1
+
+    # gamma: True
+    # gammaratio: 0.1
+
+    # linear: True
+    # linearratio: 0.1
+
+    gaussian_noise: False
+
+model:
+  learning_rate: 0.0005
+  weight_decay: 0.0001
+  upsample: True
+  num_keypoints: 6
+
+checkpoint_callback:
+  save_top_k: 10
+  every_n_epochs: 1
+
+vis_callback:
+  num_samples: 8
+  seed: 0
+
+trainer:
+  gpus: [0]
+  check_val_every_n_epoch: 1
+  val_check_interval: 1.0
+
+logger:
+  offline: True
+  name: null
+  tags: []

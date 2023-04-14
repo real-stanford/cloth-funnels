@@ -1,0 +1,69 @@
+[project]
+name = "cloth-funnels"
+version = "0.1.0"
+authors = [
+  { name="Alper", email="ac4983@columbia.edu" },
+]
+description = "A Python package for cloth-funnels"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "filelock",
+    "h5py",
+    "numpy-quaternion",
+    "opencv-python",
+    "openexr",
+    "potpourri3d==0.0.4",
+    "pyquaternion",
+    "ray[default]",
+    "scipy",
+    "tensorboardx",
+    "transformations",
+    "transforms3d",
+    "trimesh"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/columbia-ai-robotics/cloth-funnels"
+"Bug Tracker" = "https://github.com/columbia-ai-robotics/cloth-funnels/issues"
+
+[tool.black]
+include = '\.pyi?$'
+line-length = 90
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | \.vscode
+  | _build
+  | buck-out
+  | build
+  | dist
+  # The following are specific to Black, you probably don't want those.
+  | blib2to3
+  | tests/data
+)/
+'''
+
+[tool.mypy]
+ignore_missing_imports=true
+plugins = [
+  "pydantic.mypy"
+]
+exclude = [
+    "tests/"
+]
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
