@@ -85,14 +85,15 @@ The simulator is a fork of [PyFlex](https://github.com/YunzhuLi/PyFleX) from [So
 We have provided a Dockerfile in this repo for compiling and using this simulation environment for training in Docker.
 
 ```
+cd cloth_funnels
 docker build -t cloth-funnels .
 ```
 
-To launch the docker container, go to this repo's root directory, then run
+To launch the docker container, go to the `cloth_funnels` subdirectory, then run
 ```
 export CLOTH_FUNNELS_PATH=${PWD}
 nvidia-docker run \
-	-v $CLOTH_FUNNELS_PATH:/workspace/cloth-funnels\
+	-v $CLOTH_FUNNELS_PATH:/workspace/cloth_funnels\
 	-v /path/to/your/anaconda3:/path/to/your/anaconda3\
 	--gpus all --shm-size=64gb  -d -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 -it cloth-funnels
 ```
@@ -105,9 +106,9 @@ conda init bash
 source ~/.bashrc
 conda activate cloth-funnels
 ``` 
-Then, at the root of this repo inside the docker container, compile the simulator with 
+Then, inside the `cloth_funnels` directory within the docker container, compile the simulator with 
 ```
-. ./scripts/prepare.sh && ./scripts/compile.sh
+. ./prepare.sh && ./compile.sh
 ```
 *NOTE: Always make sure you're in the correct conda environment before running these two shell scripts*.
 
