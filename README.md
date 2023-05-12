@@ -133,6 +133,10 @@ The models will be stored in `cloth-funnels/models/` and the datasets will be st
 ```sh
 source download_sample.sh
 ```
+If you would like to create your own tasks, you should also run 
+```sh
+source download_cloth_data.sh
+```
 
 ## Demo Cloth Funnels 😎
 
