@@ -32,7 +32,7 @@ import cv2
 import shutil
 import h5py
 import sys
-from notebooks.episode_visualizer import visualize_episode
+from cloth_funnels.scripts.episode_visualizer import visualize_episode
 from cloth_funnels.utils.utils import flatten_dict
 from omegaconf import DictConfig, OmegaConf
 import pathlib
